@@ -1,0 +1,102 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url(./img/lukas-blazek-EWDvHNNfUmQ-unsplash.jpg);
+}
+
+header , footer {
+    background-image: linear-gradient(to bottom,#9ca3af,#4b5563);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1;
+    position: relative;
+}
+
+header {
+    box-shadow: 0 2px 5px  gray;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 3rem;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 2rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    grid-template-rows: 1fr auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 3rem 0 2rem;
+    min-height: 100%;
+    flex-grow: 1;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+.side {
+    display: flex;
+    align-items: end;
+}
+
+.content {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.credit{
+    position: fixed;
+    bottom: 3rem;
+    grid-column: 1/4;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(115, 115, 115, 0.4)
+}
+
+.content > .container {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-rows: repeat(auto-fit, 375px);
+    gap: 2rem;
+    padding-top: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.book {
+    background-color: white;
+    min-height: 375px;
+    
+}
+
+.add-book {
+    min-height: 375px;
+    min-width: 250px;
+    background-color: rgba(75, 85, 99, 0.5);
+    border: #0284c7 1px solid;
+    color: #0284c7;
+    font-size: 5rem;
+    display: grid;
+    place-items: center;
+}
+
+.add-book:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}

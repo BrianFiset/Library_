@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -11,8 +15,6 @@ header , footer {
     justify-content: center;
     align-items: center;
     color: white;
-    z-index: 1;
-    position: relative;
 }
 
 header {
@@ -32,7 +34,7 @@ footer {
 
 main {
     display: grid;
-    grid-template-columns: 20% 1fr 20%;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     background-size: cover;
     background-position: center;
@@ -47,15 +49,10 @@ main {
     font-size: 2rem;
 }
 
-
-.side {
-    display: flex;
-    align-items: end;
-}
-
 .content {
     display: grid;
     grid-template-rows: 1fr auto;
+    margin: 0 5%;
 }
 
 .credit{
@@ -104,25 +101,29 @@ main {
 
 .modal {
     visibility: hidden; 
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0,0.4);
-    z-index: 2;
     min-height: 100vh;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+}
+
+.active {
+    visibility: visible;
 }
 
 .modal > .form {
     border: 1px solid #9ca3af;
     box-shadow: 2px 2px 5px  gray;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 0 0.1rem 0.2rem;
     width: 250px;
     background-color: #9ca3af;
     color: white;
-    position: relative;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 fieldset {
@@ -141,8 +142,8 @@ fieldset {
 
 .close-modal {
     position: absolute;
-    right: 10px;
-    top: 0;
+    right: 12px;
+    top: 8px;
     font-size: 1.5rem;
 }
 

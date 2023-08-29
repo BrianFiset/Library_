@@ -62,7 +62,12 @@ header .title {
     grid-column: 1/4;
     width: 100%;
     text-align: center;
-    background-color: rgba(115, 115, 115, 0.4)
+    background-color: rgba(115, 115, 115, 0.4);
+    color: #1e293b;
+}
+
+.credit a{
+    color: #1e40af;
 }
 
 .content > .container {
@@ -85,6 +90,7 @@ header .title {
     position: relative;
     display: grid;
     gap: 0.2rem;
+    box-shadow: 0 2px 5px  #93c5fd;
 }
 
 .book .image{
@@ -113,13 +119,14 @@ header .title {
     min-height: 375px;
     min-width: 250px;
     background-color: rgba(75, 85, 99, 0.5);
-    border: #0284c7 1px solid;
-    color: #0284c7;
+    border: #1e40af 1px solid;
+    color: #1e40af;
     font-size: 5rem;
     display: grid;
     place-items: center;
     border-radius: 1rem;
     order: 1;
+    box-shadow: 0 2px 5px  #93c5fd;
 }
 
 .add-book:hover {

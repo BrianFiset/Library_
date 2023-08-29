@@ -44,6 +44,7 @@ function addBookToLibrary(){
 }
 
 function displayBooks(){
+    document.querySelectorAll('.book').forEach(book => book.remove())
     for(let i = 0 ; myLibrary.length > i; i++) {
         const book = createDiv('book');
         book.appendChild(createImg(`${myLibrary[i].image}`))

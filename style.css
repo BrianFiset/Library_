@@ -23,6 +23,7 @@ header {
     width: 100%;
     top: 0;
     height: 3rem;
+    z-index: 1;
 }
 
 footer {
@@ -67,7 +68,7 @@ header .title {
 .content > .container {
     min-height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-columns: repeat(auto-fit, 275px);
     grid-template-rows: repeat(auto-fit, 375px);
     gap: 2rem;
     padding-top: 2rem;
@@ -81,18 +82,31 @@ header .title {
     background-image: linear-gradient(90deg,#9ca3af,#4b5563);
     color: white;
     text-align: center;
+    position: relative;
+    display: grid;
+    gap: 0.2rem;
 }
 
 .book .image{
-    height: 275px;
-    margin: 1rem 1rem 0;
+    height: 250px;
+    width: 200px;
+    margin: 1rem auto 0.5rem;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .book .title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 1rem;
 
+}
+
+.book .author,
+.book .pages{
+    justify-self: start;
+    margin-left: 1rem;
 }
 
 .add-book {
@@ -163,5 +177,20 @@ fieldset {
 }
 
 .close-modal:hover {
+    cursor: pointer;
+}
+
+.delete-book {
+    background-image: url(/img/icons/trash-can-outline.svg);
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.delete-book:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
     cursor: pointer;
 }

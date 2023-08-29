@@ -9,7 +9,8 @@ const myLibrary = [
         title: 'A Mind For Numbers: How to Excel at Math and Science',
         author: 'Barbara Oakley',
         pages: 332,
-        read: 'Not read Yet'
+        read: 'Not read Yet',
+        image:'https://pictures.abebooks.com/isbn/9781469061993-fr.jpg'
     }
 ];
 
@@ -26,25 +27,16 @@ function toggleModal(){
     modal.classList.toggle('active');
 }
 
-function createBook() {
-    const book = createDiv('book');
-    const title = document.querySelector('#book-name');
-    const author = document.querySelector('#author-name');
-    const pages = document.querySelector('#book-pages');
-    const read = document.querySelector('#read-status');
-    book.appendChild(createDiv('title' , title.value));
-    book.appendChild(createDiv('author' , author.value));
-    book.appendChild(createDiv('pages' , pages.value));
-    book.appendChild(createDiv('read' , read.options[read.selectedIndex].text));
-    bookContainer.appendChild(book);
-    toggleModal();
-}
-
 function Book(){
     this.title = document.querySelector('#book-name').value;
     this.author = document.querySelector('#author-name').value;
     this.pages = document.querySelector('#book-pages').value;
     this.read = document.querySelector('#read-status').value;
+    if(!(document.querySelector('#book-image').value)){
+        this.image = 'https://media.istockphoto.com/id/936182806/vector/no-image-available-sign.jpg?s=612x612&w=0&k=20&c=9HTEtmbZ6R59xewqyIQsI_pQl3W3QDJgnxFPIHb4wQE=';
+    } else {
+        this.image = document.querySelector('#book-image').value;
+    }
 }
 
 function addBookToLibrary(){
@@ -54,6 +46,7 @@ function addBookToLibrary(){
 function displayBooks(){
     for(let i = 0 ; myLibrary.length > i; i++) {
         const book = createDiv('book');
+        book.appendChild(createImg(`${myLibrary[i].image}`))
         book.appendChild(createDiv('title' , `${myLibrary[i].title}`));
         book.appendChild(createDiv('author' , `Author: ${myLibrary[i].author}`));
         book.appendChild(createDiv('pages' , `Pages: ${myLibrary[i].pages}`));
@@ -68,6 +61,13 @@ function createDiv(selector, content){
     div.textContent = content;
     return div
 };
+
+function createImg(url){
+    const div = document.createElement('div');
+    div.classList.add('image');
+    div.style = `background-image: url(${url})`
+    return div
+}
 
 displayBooks()
 

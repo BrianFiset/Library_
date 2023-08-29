@@ -4,16 +4,9 @@ const modal = document.querySelector('.modal');
 const form = document.querySelector('.form');
 const submitBtn = document.querySelector('.submit-btn');
 const bookContainer = document.querySelector('.container');
-const read = document.querySelectorAll('.read')
-const myLibrary = [
-    {
-        title: 'A Mind For Numbers: How to Excel at Math and Science',
-        author: 'Barbara Oakley',
-        pages: 332,
-        read: 'Not read Yet',
-        image:'https://pictures.abebooks.com/isbn/9781469061993-fr.jpg'
-    }
-];
+const myLibrary = [];
+
+myLibrary.push(new Book('A Mind For Numbers: How to Excel at Math and Science','Barbara Oakley',332,'Not Read Yet','https://pictures.abebooks.com/isbn/9781469061993-fr.jpg'))
 
 modalBtn.addEventListener('click', toggleModal);
 closeModal.addEventListener('click', toggleModal);
@@ -28,15 +21,15 @@ function toggleModal(){
     modal.classList.toggle('active');
 }
 
-function Book(){
-    this.title = document.querySelector('#book-name').value;
-    this.author = document.querySelector('#author-name').value;
-    this.pages = document.querySelector('#book-pages').value;
-    this.read = document.querySelector('#read-status').value;
-    if(!(document.querySelector('#book-image').value)){
+function Book(title,author,pages,read, url){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    if(!(url)){
         this.image = 'https://media.istockphoto.com/id/936182806/vector/no-image-available-sign.jpg?s=612x612&w=0&k=20&c=9HTEtmbZ6R59xewqyIQsI_pQl3W3QDJgnxFPIHb4wQE=';
     } else {
-        this.image = document.querySelector('#book-image').value;
+        this.image = url;
     };
     this.readStatus = () => {
         if(this.read == 'Read') {
@@ -48,7 +41,11 @@ function Book(){
 }
 
 function addBookToLibrary(){
-    myLibrary.push(new Book());
+    myLibrary.push(new Book(document.querySelector('#book-name').value
+    ,document.querySelector('#author-name').value,
+    document.querySelector('#book-pages').value,
+    document.querySelector('#read-status').value,
+    document.querySelector('#book-image').value));
 }
 
 function displayBooks(){
@@ -59,13 +56,22 @@ function displayBooks(){
         book.appendChild(createDiv('title' , `${myLibrary[i].title}`));
         book.appendChild(createDiv('author' , `Author: ${myLibrary[i].author}`));
         book.appendChild(createDiv('pages' , `Pages: ${myLibrary[i].pages}`));
-        book.appendChild(createDiv('read' , `${myLibrary[i].read}`));
+        
+        const readBtn = createDiv('read' , `${myLibrary[i].read}`);
+        readBtn.setAttribute(`data-id`,i)
+        book.appendChild(readBtn);
+
         const deleteBtn = createDiv('delete-book');
         deleteBtn.setAttribute(`data-id`,i)
         book.appendChild(deleteBtn);
         bookContainer.appendChild(book);
     };
     document.querySelectorAll('.delete-book').forEach(btn => btn.addEventListener('click',deleteBook));
+    document.querySelectorAll('.read').forEach(btn => btn.addEventListener('click', (e) => {
+        let number = e.target.dataset.id
+        myLibrary[number].readStatus();
+        displayBooks();
+    }))
 };
 
 function createDiv(selector, content){
@@ -87,7 +93,7 @@ function clearInput(){
 };
 
 function deleteBook(e){
-    if (confirm("Are you want to delete?") === true) {
+    if (confirm("Do you want to delete it?") === true) {
         myLibrary.splice(e.target.dataset.id, 1);
         displayBooks();
     }

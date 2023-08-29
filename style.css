@@ -194,3 +194,16 @@ fieldset {
     transition: 0.5s;
     cursor: pointer;
 }
+
+.book .read {
+    background-image: linear-gradient(180deg, #93c5fd, #1e40af);
+    margin: 0 3rem 0.5rem;
+    padding: 0 1rem;
+    border-radius: 1rem;
+    display: grid;
+    place-items: center;
+}
+
+.book .read:hover {
+    cursor: pointer;
+}
